@@ -30,3 +30,25 @@ class MainPageLocators:
     
     SCOOTER_LOGO = (By.XPATH, './/img[@alt="Scooter"]')
     YANDEX_LOGO = (By.XPATH, './/img[@alt="Yandex"]')
+
+
+class OrderPageLocators:
+
+    NAME_INPUT = (By.XPATH, './/input[@placeholder="* Имя"]')
+    LAST_NAME_INPUT = (By.XPATH, './/input[@placeholder="* Фамилия"]')
+    ADDRESS_INPUT = (By.XPATH, './/input[@placeholder="* Адрес: куда привезти заказ"]')
+    METRO_STATION = (By.XPATH, './/input[@placeholder="* Станция метро"]')
+    METRO_STATION_OPTION = (By.XPATH, './/div[contains(@class, "Order_SelectOption")]')
+    PHONE_INPUT = (By.XPATH, './/input[@placeholder="* Телефон: на него позвонит курьер"]')
+    NEXT_BUTTON = (By.XPATH, './/button[text()="Далее"]')
+
+    DATE_INPUT = (By.XPATH, './/input[@placeholder="* Когда привезти самокат"]')
+    RENTAL_PERIOD = (By.XPATH, './/div[text()="* Срок аренды"]')
+    RENTAL_PERIOD_OPTION = (By.XPATH, './/div[contains(@class, "Dropdown-option")]')
+    COLOR_BLACK = (By.ID, 'black')
+    COLOR_GREY = (By.ID, 'grey')
+    COMMENT_INPUT = (By.XPATH, './/input[@placeholder="Комментарий для курьера"]')
+    ORDER_BUTTON = (By.XPATH, './/button[@class="Button_Button__ra12g Button_Middle__1CSJM" and text()="Заказать"]')
+
+    CONFIRM_BUTTON = (By.XPATH, './/button[text()="Да"]')
+    SUCCESS_MESSAGE = (By.XPATH, './/div[contains(@class, "Order_ModalHeader")]')
