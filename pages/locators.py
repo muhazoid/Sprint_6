@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators:
     
     ORDER_BUTTON_TOP = (By.XPATH, './/button[@class="Button_Button__ra12g" and text()="Заказать"]')
-    ORDER_BUTTON_BOTTOM = (By.XPATH, './/button[@class="Button_Button__ra12g Button_UltraBig__UU3Lp" and text()="Заказать"]')
+    ORDER_BUTTON_BOTTOM = (By.XPATH, '(//button[text()="Заказать"])[2]')
 
     QUESTIONS = [
         (By.ID, 'accordion__heading-0'),

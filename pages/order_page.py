@@ -3,10 +3,12 @@ from pages.locators import OrderPageLocators
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time
+import allure
 
 
 class OrderPage(BasePage):
 
+    @allure.step("Заполнение формы 'Для кого самокат'")
     def fill_personal_info(self, name, last_name, address, metro, phone):
         self.send_keys(OrderPageLocators.NAME_INPUT, name)
         self.send_keys(OrderPageLocators.LAST_NAME_INPUT, last_name)
@@ -22,6 +24,7 @@ class OrderPage(BasePage):
         self.send_keys(OrderPageLocators.PHONE_INPUT, phone)
         self.click_element(OrderPageLocators.NEXT_BUTTON)
 
+    @allure.step("Заполнение формы 'Про аренду'")
     def fill_rent_info(self, date, rental_period, color, comment=None):
         self.send_keys(OrderPageLocators.DATE_INPUT, date)
 
@@ -45,8 +48,10 @@ class OrderPage(BasePage):
 
         self.click_element(OrderPageLocators.ORDER_BUTTON)
 
+    @allure.step("Подтверждение заказа")
     def confirm_order(self):
         self.click_element(OrderPageLocators.CONFIRM_BUTTON)
 
+    @allure.step("Получение сообщения об успешном заказе")
     def get_success_message(self):
         return self.get_text(OrderPageLocators.SUCCESS_MESSAGE)
