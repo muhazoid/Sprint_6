@@ -38,3 +38,4 @@ class MainPage(BasePage):
     @allure.step("Получение текущего URL")
     def get_current_url(self):
         return self.driver.current_url
+    

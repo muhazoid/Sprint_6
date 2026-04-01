@@ -55,3 +55,4 @@ class OrderPage(BasePage):
     @allure.step("Получение сообщения об успешном заказе")
     def get_success_message(self):
         return self.get_text(OrderPageLocators.SUCCESS_MESSAGE)
+    

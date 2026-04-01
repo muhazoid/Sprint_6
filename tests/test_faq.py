@@ -15,3 +15,4 @@ class TestFAQ:
         main_page.click_question(index)
         actual_text = main_page.get_answer_text(index)
         assert actual_text == expected_text
+        

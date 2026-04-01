@@ -23,3 +23,4 @@ class TestNavigation:
         assert "dzen.ru" in driver.current_url
         driver.close()
         driver.switch_to.window(old_tab)
+        

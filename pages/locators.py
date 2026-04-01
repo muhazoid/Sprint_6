@@ -56,3 +56,4 @@ class OrderPageLocators:
 
     CONFIRM_BUTTON = (By.XPATH, './/button[text()="Да"]') # Кнопка "Да" в модальном окне подтверждения
     SUCCESS_MESSAGE = (By.XPATH, './/div[contains(@class, "Order_ModalHeader")]') # Сообщение об успешном создании заказа
+    

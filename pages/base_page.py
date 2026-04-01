@@ -36,3 +36,4 @@ class BasePage:
     @allure.step("Поиск всех элементов по локатору: {locator}")
     def find_elements(self, locator):
         return self.driver.find_elements(*locator)
+    

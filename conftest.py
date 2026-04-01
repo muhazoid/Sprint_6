@@ -9,3 +9,4 @@ def driver():
     driver.get(Urls.SCOOTER_URL)
     yield driver
     driver.quit()
+    
