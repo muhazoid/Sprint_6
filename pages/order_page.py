@@ -38,8 +38,7 @@ class OrderPage(BasePage):
 
         self.click_element(color_locator)
 
-        if comment:
-            self.send_keys(OrderPageLocators.COMMENT_INPUT, comment)
+        self.send_keys(OrderPageLocators.COMMENT_INPUT, comment)
 
         self.click_element(OrderPageLocators.ORDER_BUTTON)
 

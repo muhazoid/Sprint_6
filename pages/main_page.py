@@ -35,9 +35,7 @@ class MainPage(BasePage):
     def click_yandex_logo(self):
         self.click_element(MainPageLocators.YANDEX_LOGO)
     
-    @allure.step("Получение текущего URL")
-    def get_current_url(self):
-        return self.driver.current_url
+    
     
     
     

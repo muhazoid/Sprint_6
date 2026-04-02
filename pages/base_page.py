@@ -54,3 +54,7 @@ class BasePage:
     def close_current_tab_and_go_back(self):
         self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[0])
+
+    @allure.step("Получение текущего URL")
+    def get_current_url(self):
+        return self.driver.current_url
