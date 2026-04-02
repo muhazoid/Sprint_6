@@ -1,41 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-# Локаторы главной страницы 
-class MainPageLocators:
-    
-    ORDER_BUTTON_TOP = (By.XPATH, './/button[@class="Button_Button__ra12g" and text()="Заказать"]') # Кнопка "Заказать" вверху страницы
-    ORDER_BUTTON_BOTTOM = (By.XPATH, '(//button[text()="Заказать"])[2]') # Кнопка "Заказать" внизу страницы
 
-    # Список вопросов в разделе "Вопросы о важном"
-    QUESTIONS = [
-        (By.ID, 'accordion__heading-0'),
-        (By.ID, 'accordion__heading-1'),
-        (By.ID, 'accordion__heading-2'),
-        (By.ID, 'accordion__heading-3'),
-        (By.ID, 'accordion__heading-4'),
-        (By.ID, 'accordion__heading-5'),
-        (By.ID, 'accordion__heading-6'),
-        (By.ID, 'accordion__heading-7'),
-    ]
-    
-    # Список ответов в разделе "Вопросы о важном"
-    ANSWERS = [
-        (By.XPATH, './/div[@id="accordion__panel-0"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-1"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-2"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-3"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-4"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-5"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-6"]/p'),
-        (By.XPATH, './/div[@id="accordion__panel-7"]/p'),
-    ]
-    
-    SCOOTER_LOGO = (By.XPATH, './/img[@alt="Scooter"]') # Логотип "Самоката"
-    YANDEX_LOGO = (By.XPATH, './/img[@alt="Yandex"]') # Логотип "Яндекса" 
-
-
-# Локаторы страницы заказа 
 class OrderPageLocators:
 
     NAME_INPUT = (By.XPATH, './/input[@placeholder="* Имя"]') # Поле ввода имени
@@ -57,3 +23,15 @@ class OrderPageLocators:
     CONFIRM_BUTTON = (By.XPATH, './/button[text()="Да"]') # Кнопка "Да" в модальном окне подтверждения
     SUCCESS_MESSAGE = (By.XPATH, './/div[contains(@class, "Order_ModalHeader")]') # Сообщение об успешном создании заказа
     
+    BODY_CLICK = (By.TAG_NAME, 'body')
+
+    COLOR_BLACK = (By.ID, 'black')
+    COLOR_GREY = (By.ID, 'grey')
+
+    @staticmethod
+    def get_metro_station_option(station_name):
+        return (By.XPATH, f'.//div[text()="{station_name}"]')
+    
+    @staticmethod
+    def get_rental_period_option(period_text):
+        return (By.XPATH, f'.//div[text()="{period_text}"]')

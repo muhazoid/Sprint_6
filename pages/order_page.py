@@ -1,8 +1,6 @@
 from pages.base_page import BasePage
-from pages.locators import OrderPageLocators
+from locators.order_page import OrderPageLocators
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import time
 import allure
 
 
@@ -16,7 +14,7 @@ class OrderPage(BasePage):
 
         self.click_element(OrderPageLocators.METRO_STATION)
     
-        station_locator = (By.XPATH, f'.//div[text()="{metro}"]')
+        station_locator = OrderPageLocators.get_metro_station_option(metro)
         self.wait.until(EC.element_to_be_clickable(station_locator))
     
         self.click_element(station_locator)
@@ -25,23 +23,20 @@ class OrderPage(BasePage):
         self.click_element(OrderPageLocators.NEXT_BUTTON)
 
     @allure.step("Заполнение формы 'Про аренду'")
-    def fill_rent_info(self, date, rental_period, color, comment=None):
+    def fill_rent_info(self, date, rental_period, color_locator, comment=None):
         self.send_keys(OrderPageLocators.DATE_INPUT, date)
 
-        time.sleep(0.5)
-        self.driver.find_element(By.TAG_NAME, 'body').click()
-        time.sleep(0.5)
+        self.wait.until(EC.visibility_of_element_located(OrderPageLocators.DATE_INPUT))
+        self.click_element(OrderPageLocators.BODY_CLICK)
+        self.wait.until(EC.visibility_of_element_located(OrderPageLocators.DATE_INPUT))
 
         self.click_element(OrderPageLocators.RENTAL_PERIOD)
         self.wait.until(EC.visibility_of_element_located(OrderPageLocators.RENTAL_PERIOD_OPTION))
         
-        period_locator = (By.XPATH, f'.//div[text()="{rental_period}"]')
+        period_locator = OrderPageLocators.get_rental_period_option(rental_period)
         self.click_element(period_locator)
 
-        if color == 'black':
-            self.click_element(OrderPageLocators.COLOR_BLACK)
-        elif color == 'grey':
-            self.click_element(OrderPageLocators.COLOR_GREY)
+        self.click_element(color_locator)
 
         if comment:
             self.send_keys(OrderPageLocators.COMMENT_INPUT, comment)
@@ -52,7 +47,8 @@ class OrderPage(BasePage):
     def confirm_order(self):
         self.click_element(OrderPageLocators.CONFIRM_BUTTON)
 
-    @allure.step("Получение сообщения об успешном заказе")
-    def get_success_message(self):
-        return self.get_text(OrderPageLocators.SUCCESS_MESSAGE)
+    
+    @allure.step("Проверка успешного оформления заказа")
+    def is_order_successful(self):
+        return self.is_element_displayed(OrderPageLocators.SUCCESS_MESSAGE)
     

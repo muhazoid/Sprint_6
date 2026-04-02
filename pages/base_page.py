@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import allure
+from data import Urls
 
 
 class BasePage:
@@ -37,3 +38,19 @@ class BasePage:
     def find_elements(self, locator):
         return self.driver.find_elements(*locator)
     
+    @allure.step("Проверка, отображается ли элемент: {locator}")
+    def is_element_displayed(self, locator):
+        element = self.driver.find_element(*locator)
+        return element.is_displayed()
+    
+    @allure.step("Переключение на новую вкладку")
+    def switch_to_new_tab(self):
+        self.wait.until(EC.number_of_windows_to_be(2))
+        new_tab = self.driver.window_handles[-1]
+        self.driver.switch_to.window(new_tab)
+        WebDriverWait(self.driver, 5).until(EC.url_contains(Urls.DZEN_PAGE))
+    
+    @allure.step("Закрыть текущую вкладку и вернуться на предыдущую")
+    def close_current_tab_and_go_back(self):
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])

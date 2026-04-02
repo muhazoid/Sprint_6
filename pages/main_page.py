@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import MainPageLocators
+from locators.main_page import MainPageLocators
 from selenium.webdriver.support import expected_conditions as EC
 import allure
 
@@ -38,4 +38,6 @@ class MainPage(BasePage):
     @allure.step("Получение текущего URL")
     def get_current_url(self):
         return self.driver.current_url
+    
+    
     

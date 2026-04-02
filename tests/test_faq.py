@@ -1,13 +1,13 @@
 import allure
 import pytest
 from pages.main_page import MainPage
-from pages.locators import MainPageLocators
-from data import FAQ_DATA
+from locators.main_page import MainPageLocators
+from data import TestData
 
 
 class TestFAQ:
     @allure.title("Проверка текста ответа на вопрос №{index}")
-    @pytest.mark.parametrize("index, expected_text", FAQ_DATA)
+    @pytest.mark.parametrize("index, expected_text", TestData.FAQ_DATA)
     def test_faq_answer_text(self, driver, index, expected_text):
         main_page = MainPage(driver)
         question_locator = MainPageLocators.QUESTIONS[index]
